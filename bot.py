@@ -23,6 +23,12 @@ async def on_message(message):
 
     await bot.process_commands(message)  # Penting untuk memanggil fungsi ini agar perintah tetap berjalan
 
+@bot.event
+async def on_member_join(member):
+    # Mengirim pesan ucapan selamat
+    for channel in member.guild.text_channels:
+        await channel.send(f'👋🏻Selamat datang, {member.mention}!')
+
 @bot.command()
 async def start(ctx):
     await ctx.send("Hi! I'm a chat manager bot!")
